@@ -10,7 +10,7 @@ Dir[ARGV[0]+"/**/*"].each do |fn|
 
     puts " * #{fn}"
 
-    data = File.read(fn).gsub!(/<\?\s/, "<?php ")
+    data = File.read(fn).gsub(/<\?\s/, "<?php ")
 
     File.open(fn, 'w') { |f| f << data }
 end
