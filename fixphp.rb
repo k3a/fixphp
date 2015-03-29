@@ -11,7 +11,7 @@ Dir[ARGV[0]+"/**/*"].each do |fn|
     puts " * #{fn}"
 
     begin
-        data = File.read(fn).gsub(/<\?\s/, "<?php ")
+        data = File.read(fn).gsub(/<\?([^p])/, '<?php \1')
         File.open(fn, 'w') { |f| f << data }
     rescue
         $stderr.puts " #{$!}"
